@@ -32,6 +32,6 @@ jobs:
 
     - name: build
       run: |
-        oras pull -uyunhorn -p${{ secrets.GH_PACKAGE_TOKEN }} ghcr.io/yunhorn/files:build
+        oras pull -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io/yunhorn/files:build
         chmod +x build.sh
         ./build.sh
