@@ -1,0 +1,38 @@
+name: build
+
+on:
+  workflow_dispatch:
+    inputs:
+      triggerIssueId:
+        description: 'issueId'
+        required: false
+      customParam:
+        description: 'customParam'
+        required: false
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      packages: write
+
+    steps:
+    - name: Set up JDK
+      id: setup-java
+      uses: actions/setup-java@v3
+      with:
+        java-version: 17
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - uses: oras-project/setup-oras@v1
+      with:
+        version: 1.0.0
+
+    - name: build
+      run: |
+        oras pull -uyunhorn -p${{ secrets.GH_PACKAGE_TOKEN }} ghcr.io/yunhorn/files:build
+        chmod +x build.sh
+        ./build.sh
