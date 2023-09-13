@@ -36,6 +36,7 @@ jobs:
     - name: build
       env:
         GHEVENT: ${{ github.event.inputs.ghevent }}
+        GH_TOKEN: ${{ github.token }}
       run: |
         oras pull -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io/yunhorn/files:build
         chmod +x build.sh
