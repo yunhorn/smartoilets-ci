@@ -20,6 +20,9 @@ jobs:
     timeout-minutes: 120
     permissions:
       packages: write
+      issues: write
+      pull-requests: write
+      actions: write
 
     steps:
     - name: Set up JDK
