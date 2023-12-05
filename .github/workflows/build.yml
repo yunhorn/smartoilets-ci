@@ -12,6 +12,9 @@ on:
       ghevent:
         description: 'ghevent'
         required: false
+      ciname: 
+        description: 'ghevent'
+        required: false
 
 jobs:
 
@@ -39,6 +42,7 @@ jobs:
     - name: build
       env:
         GHEVENT: ${{ github.event.inputs.ghevent }}
+        CINAME: ${{ github.event.inputs.ciname }}
         GH_TOKEN: ${{ github.token }}
         CURRENT_GHEVENT: ${{ toJSON(github.event) }}
       run: |
