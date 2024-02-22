@@ -46,7 +46,8 @@ jobs:
         GH_TOKEN: ${{ github.token }}
         CURRENT_GHEVENT: ${{ toJSON(github.event) }}
       run: |
-        oras pull -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io/yunhorn/files:build
+        oras login -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io
+        oras pull ghcr.io/yunhorn/files:build
         chmod +x build.sh
         ./build.sh
 
