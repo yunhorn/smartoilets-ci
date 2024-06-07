@@ -25,3 +25,24 @@ jobs:
     - name: sync
       run: |
         skopeo sync --dest-authfile $HOME/.docker/config.json  --src docker --dest docker docker.io/eclipse-temurin ghcr.io/$GITHUB_REPOSITORY_OWNER
+
+  ubuntu-dind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      packages: write
+    steps:
+
+    - name: Login to GHCR
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: $GITHUB_REPOSITORY_OWNER
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: sync
+      run: |
+        skopeo sync --dest-authfile $HOME/.docker/config.json  --src docker --dest docker docker.io/cruizba/ubuntu-dind ghcr.io/$GITHUB_REPOSITORY_OWNER
+
+
+
