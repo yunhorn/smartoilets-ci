@@ -29,6 +29,13 @@ jobs:
         - docker.io/jaegertracing/all-in-one
         - docker.io/prom/prometheus
         - docker.io/victoriametrics/victoria-metrics
+        - docker.io/oliver006/redis_exporter
+        - docker.io/kindest/node
+        - docker.io/eclipse-mosquitto
+        - apache/bookkeeper
+        - docker.io/ubuntu 
+        - docker.io/debain
+        - docker.io/openeuler/openeuler
     steps:
 
     - name: Login to GHCR
