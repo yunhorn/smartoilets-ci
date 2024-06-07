@@ -23,4 +23,4 @@ jobs:
 
     - name: sync
       run: |
-        skopeo copy --dest-authfile $HOME/.docker/config.json  --src docker --dest docker docker.io/eclipse-temurin ghcr.io/$GITHUB_REPOSITORY_OWNER
+        skopeo sync --dest-authfile $HOME/.docker/config.json  --src docker --dest docker docker.io/eclipse-temurin ghcr.io/$GITHUB_REPOSITORY_OWNER
