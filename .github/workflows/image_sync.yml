@@ -45,6 +45,12 @@ jobs:
         - docker.io/chirpstack/chirpstack-geolocation-server
         - docker.io/postgres
         - docker.io/bitnami/etcd
+        - docker.io/golang
+        # - docker.io/fluentd
+        - docker.io/fluent/fluentd
+        - docker.io/fluent/fluent-bit
+        - docker.io/grafana/grafana
+        - docker.io/otel/opentelemetry-collector
     steps:
 
     - name: Login to GHCR
