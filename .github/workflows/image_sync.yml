@@ -51,6 +51,7 @@ jobs:
         - docker.io/fluent/fluent-bit
         - docker.io/grafana/grafana
         - docker.io/otel/opentelemetry-collector
+        - docker.io/openfga/openfga
     steps:
 
     - name: Login to GHCR
