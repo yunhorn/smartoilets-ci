@@ -52,6 +52,8 @@ jobs:
         - docker.io/grafana/grafana
         - docker.io/otel/opentelemetry-collector
         - docker.io/openfga/openfga
+        - docker.io/distribution/distribution
+        - docker.io/openpolicyagent/opa
     steps:
 
     - name: Login to GHCR
