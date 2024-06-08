@@ -36,6 +36,15 @@ jobs:
         - docker.io/ubuntu 
         - docker.io/debain
         - docker.io/openeuler/openeuler
+        - docker.io/chirpstack/chirpstack-network-server
+        - docker.io/chirpstack/chirpstack-gateway-bridge
+        - docker.io/chirpstack/chirpstack-application-server
+        - docker.io/chirpstack/chirpstack
+        - docker.io/chirpstack/chirpstack-rest-api
+        - docker.io/chirpstack/chirpstack-fuota-server
+        - docker.io/chirpstack/chirpstack-geolocation-server
+        - docker.io/postgres
+        - docker.io/bitnami/etcd
     steps:
 
     - name: Login to GHCR
