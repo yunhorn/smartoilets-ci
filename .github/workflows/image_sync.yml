@@ -62,6 +62,7 @@ jobs:
 
     - name: sync
       run: |
+        docker run -v $HOME/.docker/config.json:/tmp/config.json --rm quay.io/skopeo/stable sync -h
         #skopeo sync --dest-authfile $HOME/.docker/config.json --src docker --dest docker ${{ matrix.img }} ghcr.io/$GITHUB_REPOSITORY_OWNER
         if [ ${{ matrix.img }} = "docker.io/kindest/node" ];then 
           docker run -v $HOME/.docker/config.json:/tmp/config.json --rm quay.io/skopeo/stable sync --dest-authfile /tmp/config.json  --src docker --dest docker ${{ matrix.img }} ghcr.io/$GITHUB_REPOSITORY_OWNER/kindest
