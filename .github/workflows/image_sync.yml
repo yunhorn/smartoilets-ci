@@ -32,7 +32,7 @@ jobs:
         - docker.io/oliver006/redis_exporter
         - docker.io/kindest/node
         - docker.io/eclipse-mosquitto
-        - apache/bookkeeper
+        - docker.io/apache/bookkeeper
         - docker.io/ubuntu 
         - docker.io/debain
         - docker.io/openeuler/openeuler
