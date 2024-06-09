@@ -59,6 +59,9 @@ jobs:
         - docker.io/aquasec/trivy
         - docker.io/alpine
         - docker.io/busybox
+        - docker.io/gitea/gitea
+        - docker.io/gitea/act_runner
+        - docker.io/gitea/tea
     steps:
 
     - name: Login to GHCR
