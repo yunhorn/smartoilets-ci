@@ -57,6 +57,8 @@ jobs:
         - docker.io/minio/minio
         - docker.io/minio/mc
         - docker.io/aquasec/trivy
+        - docker.io/alpine
+        - docker.io/busybox
     steps:
 
     - name: Login to GHCR
