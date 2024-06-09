@@ -54,6 +54,8 @@ jobs:
         - docker.io/openfga/openfga
         - docker.io/distribution/distribution
         - docker.io/openpolicyagent/opa
+        - docker.io/minio/minio
+        - docker.io/minio/mc
     steps:
 
     - name: Login to GHCR
