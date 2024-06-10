@@ -1,0 +1,97 @@
+name: sync
+
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: '0 19 * * 0,1,2,3,4,5,6'
+
+permissions: write-all
+
+jobs:
+
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      packages: write
+    strategy:
+      fail-fast: false 
+      matrix:
+        img: 
+        - docker.io/eclipse-temurin
+        - docker.io/cruizba/ubuntu-dind
+        - docker.io/docker
+        - docker.io/redis 
+        - docker.io/mysql
+        - docker.io/valkey/valkey
+        - registry.k8s.io/etcd
+        - docker.io/apachepulsar/pulsar
+        - docker.io/victoriametrics/vmagent
+        - docker.io/jaegertracing/all-in-one
+        - docker.io/prom/prometheus
+        - docker.io/victoriametrics/victoria-metrics
+        - docker.io/oliver006/redis_exporter
+        - docker.io/kindest/node
+        - docker.io/eclipse-mosquitto
+        - docker.io/apache/bookkeeper
+        - docker.io/ubuntu 
+        - docker.io/debain
+        - docker.io/openeuler/openeuler
+        - docker.io/chirpstack/chirpstack-network-server
+        - docker.io/chirpstack/chirpstack-gateway-bridge
+        - docker.io/chirpstack/chirpstack-application-server
+        - docker.io/chirpstack/chirpstack
+        - docker.io/chirpstack/chirpstack-rest-api
+        - docker.io/chirpstack/chirpstack-fuota-server
+        - docker.io/chirpstack/chirpstack-geolocation-server
+        - docker.io/postgres
+        - docker.io/bitnami/etcd
+        - docker.io/golang
+        # - docker.io/fluentd
+        - docker.io/fluent/fluentd
+        - docker.io/fluent/fluent-bit
+        - docker.io/grafana/grafana
+        - docker.io/otel/opentelemetry-collector
+        - docker.io/openfga/openfga
+        - docker.io/distribution/distribution
+        - docker.io/openpolicyagent/opa
+        - docker.io/minio/minio
+        - docker.io/minio/mc
+        - docker.io/aquasec/trivy
+        - docker.io/alpine
+        - docker.io/busybox
+        - docker.io/gitea/gitea
+        - docker.io/gitea/act_runner
+        - docker.io/gitea/tea
+        - docker.io/nginx
+        - docker.io/node
+        - docker.io/longhornio/longhorn-manager
+    steps:
+
+    - name: Login to GHCR
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: $GITHUB_REPOSITORY_OWNER
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: sync
+      run: |
+        docker run -v $HOME/.docker/config.json:/tmp/config.json --rm quay.io/skopeo/stable sync -h
+        #skopeo sync --dest-authfile $HOME/.docker/config.json --src docker --dest docker ${{ matrix.img }} ghcr.io/$GITHUB_REPOSITORY_OWNER
+        if [ ${{ matrix.img }} = "docker.io/kindest/node" ];then 
+          docker run -v $HOME/.docker/config.json:/tmp/config.json --rm quay.io/skopeo/stable sync --keep-going --dest-authfile /tmp/config.json  --src docker --dest docker ${{ matrix.img }} ghcr.io/$GITHUB_REPOSITORY_OWNER/kindest
+          exit 0
+        fi 
+
+        if [ ${{ matrix.img }} = "docker.io/longhornio/longhorn-manager" ];then 
+          docker run -v $HOME/.docker/config.json:/tmp/config.json --rm quay.io/skopeo/stable sync --keep-going --dest-authfile /tmp/config.json  --src docker --dest docker ${{ matrix.img }} ghcr.io/$GITHUB_REPOSITORY_OWNER/longhornio
+          exit 0
+        fi 
+
+        docker run -v $HOME/.docker/config.json:/tmp/config.json --rm quay.io/skopeo/stable sync --keep-going --dest-authfile /tmp/config.json  --src docker --dest docker ${{ matrix.img }} ghcr.io/$GITHUB_REPOSITORY_OWNER
+        
+        
+
+
