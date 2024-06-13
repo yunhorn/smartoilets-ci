@@ -68,6 +68,7 @@ jobs:
         - docker.io/node
         - docker.io/longhornio/longhorn-manager
         - docker.io/rust
+        - docker.io/flannel/flannel
     steps:
 
     - name: Login to GHCR
