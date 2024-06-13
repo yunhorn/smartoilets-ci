@@ -67,6 +67,7 @@ jobs:
         - docker.io/nginx
         - docker.io/node
         - docker.io/longhornio/longhorn-manager
+        - docker.io/rust
     steps:
 
     - name: Login to GHCR
