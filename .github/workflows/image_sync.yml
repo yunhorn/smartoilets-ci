@@ -19,6 +19,7 @@ jobs:
       fail-fast: false 
       matrix:
         img: 
+        - docker.io/renovate/renovate
         - docker.io/eclipse-temurin
         - docker.io/cruizba/ubuntu-dind
         - docker.io/docker
