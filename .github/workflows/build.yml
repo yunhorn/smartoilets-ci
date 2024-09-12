@@ -155,9 +155,6 @@ jobs:
       pull-requests: write
       actions: write
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
     - uses: oras-project/setup-oras@v1
       with:
         version: 1.0.0
@@ -168,7 +165,7 @@ jobs:
       #TODO inputs.java_version
         java-version: ${{ matrix.java_version }}
         distribution: 'temurin'
-        cache: 'maven'
+        # cache: 'maven'
     - name: ci
       env:
         GHEVENT: ${{ github.event.inputs.ghevent }}
