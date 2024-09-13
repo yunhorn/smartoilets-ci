@@ -21,6 +21,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    env:
+      GHEVENT: ${{ github.event.inputs.ghevent }}
+      CINAME: build
+      GH_TOKEN: ${{ github.token }}
+      CURRENT_GHEVENT: ${{ toJSON(github.event) }}
     permissions:
       packages: write
       issues: write
@@ -40,11 +45,6 @@ jobs:
         version: 1.0.0
 
     - name: build
-      env:
-        GHEVENT: ${{ github.event.inputs.ghevent }}
-        CINAME: build
-        GH_TOKEN: ${{ github.token }}
-        CURRENT_GHEVENT: ${{ toJSON(github.event) }}
       run: |
         oras login -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io
         oras pull ghcr.io/yunhorn/files:build
@@ -112,6 +112,11 @@ jobs:
   watcher:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    env:
+      GHEVENT: ${{ github.event.inputs.ghevent }}
+      CINAME: watcher
+      GH_TOKEN: ${{ github.token }}
+      CURRENT_GHEVENT: ${{ toJSON(github.event) }}
     needs:
     - prlabel 
     - rebuild-cache
@@ -130,11 +135,6 @@ jobs:
         version: 1.0.0
 
     - name: build
-      env:
-        GHEVENT: ${{ github.event.inputs.ghevent }}
-        CINAME: watcher
-        GH_TOKEN: ${{ github.token }}
-        CURRENT_GHEVENT: ${{ toJSON(github.event) }}
       run: |
         oras pull -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io/yunhorn/files:build
         chmod +x build.sh
@@ -143,6 +143,11 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    env:
+      GHEVENT: ${{ github.event.inputs.ghevent }}
+      CINAME: ci
+      GH_TOKEN: ${{ github.token }}
+      CURRENT_GHEVENT: ${{ toJSON(github.event) }}
     strategy:
       fail-fast: false
       matrix:
@@ -167,11 +172,6 @@ jobs:
         distribution: 'temurin'
         # cache: 'maven'
     - name: ci
-      env:
-        GHEVENT: ${{ github.event.inputs.ghevent }}
-        CINAME: ci
-        GH_TOKEN: ${{ github.token }}
-        CURRENT_GHEVENT: ${{ toJSON(github.event) }}
       run: |
         oras login -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io
         oras pull -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io/yunhorn/files:build
