@@ -148,6 +148,7 @@ jobs:
       CINAME: ci
       GH_TOKEN: ${{ github.token }}
       CURRENT_GHEVENT: ${{ toJSON(github.event) }}
+      JAVA_VERSION: ${{ matrix.java_version }}
     strategy:
       fail-fast: false
       matrix:
