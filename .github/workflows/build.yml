@@ -1,6 +1,7 @@
 name: build
 
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       triggerIssueId:
@@ -18,7 +19,37 @@ on:
 
 jobs:
 
+  geninfo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    outputs:
+      ref: ${{ steps.run.outputs.ref }}
+      commitID: ${{ steps.run.outputs.commitID }}
+    env:
+      GHEVENT: ${{ github.event.inputs.ghevent }}
+      CINAME: geninfo
+      GH_TOKEN: ${{ github.token }}
+      CURRENT_GHEVENT: ${{ toJSON(github.event) }}
+    permissions:
+      packages: write
+      issues: write
+      pull-requests: write
+      actions: write
+    steps:
+    - uses: oras-project/setup-oras@v1
+      with:
+        version: 1.0.0
+    - name: run
+      id: run
+      run: |
+        oras login -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io
+        oras pull ghcr.io/yunhorn/files:build
+        chmod +x build.sh
+        ./build.sh
+
   build:
+    needs:
+    - geninfo
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
