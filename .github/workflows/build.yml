@@ -85,6 +85,8 @@ jobs:
         ./build.sh
 
 #TODO 动态一个job
+#TODO CI for gstack
+#TODO CI for chirpstack
   prlabel:
     runs-on: ubuntu-latest
     timeout-minutes: 120
