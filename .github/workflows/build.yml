@@ -166,7 +166,7 @@ jobs:
           - '17'
           - '21'
         profile:
-          - mysql
+          - default #mysql
           - postgresql
     permissions:
       packages: write
