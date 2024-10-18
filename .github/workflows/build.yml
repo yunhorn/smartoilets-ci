@@ -158,12 +158,16 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       CURRENT_GHEVENT: ${{ toJSON(github.event) }}
       JAVA_VERSION: ${{ matrix.java_version }}
+      CI_PROFILE: ${{ matrix.profile }}
     strategy:
       fail-fast: false
       matrix:
         java_version: 
           - '17'
           - '21'
+        profile:
+          - mysql
+          - postgresql
     permissions:
       packages: write
       issues: write
