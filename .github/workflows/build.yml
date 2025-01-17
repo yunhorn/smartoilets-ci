@@ -150,7 +150,7 @@ jobs:
         ./build.sh
 
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runasos }}
     timeout-minutes: 120
     env:
       GHEVENT: ${{ github.event.inputs.ghevent }}
@@ -168,6 +168,9 @@ jobs:
         profile:
           - default #mysql
           - postgresql
+        runasos:
+          - ubuntu-latest
+          - ubuntu-24.04-arm
     permissions:
       packages: write
       issues: write
