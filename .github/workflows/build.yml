@@ -126,7 +126,8 @@ jobs:
       issues: write
       pull-requests: write
       actions: write
-
+    needs:
+    - build 
     steps:
     - name: Set up JDK
       id: setup-java
