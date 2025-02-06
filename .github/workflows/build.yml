@@ -31,7 +31,12 @@ jobs:
       issues: write
       pull-requests: write
       actions: write
-
+    strategy:
+      fail-fast: false
+      matrix:
+        runasos:
+          - ubuntu-latest
+          - ubuntu-24.04-arm
     steps:
     - name: Set up JDK
       id: setup-java
