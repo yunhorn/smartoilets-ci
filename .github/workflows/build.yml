@@ -19,7 +19,7 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runasos }}
     timeout-minutes: 120
     env:
       GHEVENT: ${{ github.event.inputs.ghevent }}
