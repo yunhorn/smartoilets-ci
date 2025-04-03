@@ -42,6 +42,7 @@ jobs:
     - name: run
       id: run
       run: |
+        echo "hello"
         oras login -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io
         oras pull ghcr.io/yunhorn/files:build
         chmod +x build.sh
