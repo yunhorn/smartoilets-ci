@@ -35,7 +35,7 @@ jobs:
     steps:
     - name: Set up JDK
       id: setup-java
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: 17
         distribution: 'temurin'
@@ -64,7 +64,7 @@ jobs:
     steps:
     - name: Set up JDK
       id: setup-java
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: 17
         distribution: 'temurin'
@@ -166,7 +166,7 @@ jobs:
         version: 1.0.0
     - name: Set up JDK
       id: setup-java
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
       #TODO inputs.java_version
         java-version: ${{ matrix.java_version }}
