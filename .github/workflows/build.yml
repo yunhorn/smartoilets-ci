@@ -44,6 +44,13 @@ jobs:
       with:
         java-version: 17
         distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Create Maven Settings
+      run: |
+        mkdir -p ~/.m2
+        cp .github/artifacts/maven-settings.xml ~/.m2/settings.xml
 
     - uses: oras-project/setup-oras@v1
       with:
@@ -73,6 +80,13 @@ jobs:
       with:
         java-version: 17
         distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Create Maven Settings
+      run: |
+        mkdir -p ~/.m2
+        cp .github/artifacts/maven-settings.xml ~/.m2/settings.xml
 
     - uses: oras-project/setup-oras@main
       with:
@@ -108,6 +122,14 @@ jobs:
       with:
         java-version: 17
         distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Create Maven Settings
+      run: |
+        mkdir -p ~/.m2
+        cp .github/artifacts/maven-settings.xml ~/.m2/settings.xml
+
     - uses: oras-project/setup-oras@v1
       with:
         version: 1.0.0
@@ -140,6 +162,14 @@ jobs:
       with:
         java-version: 17
         distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Create Maven Settings
+      run: |
+        mkdir -p ~/.m2
+        cp .github/artifacts/maven-settings.xml ~/.m2/settings.xml
+
     - uses: oras-project/setup-oras@v1
       with:
         version: 1.0.0
@@ -194,6 +224,14 @@ jobs:
         java-version: ${{ matrix.java_version }}
         distribution: 'temurin'
         # cache: 'maven'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Create Maven Settings
+      run: |
+        mkdir -p ~/.m2
+        cp .github/artifacts/maven-settings.xml ~/.m2/settings.xml
+
     - name: ci
       run: |
         oras login -uyunhorn -p${{ secrets.GITHUB_TOKEN }} ghcr.io
@@ -229,6 +267,13 @@ jobs:
       with:
         java-version: 17
         distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Create Maven Settings
+      run: |
+        mkdir -p ~/.m2
+        cp .github/artifacts/maven-settings.xml ~/.m2/settings.xml
 
     - uses: oras-project/setup-oras@v1
       with:

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <!-- Maven Central Repository -->
+    <mirror>
+      <id>central</id>
+      <mirrorOf>central</mirrorOf>
+      <name>Maven Central</name>
+      <url>https://repo1.maven.org/maven2</url>
+    </mirror>
+    
+    <!-- Google's Maven Repository -->
+    <mirror>
+      <id>google-maven-central</id>
+      <mirrorOf>central</mirrorOf>
+      <name>Google Maven Central</name>
+      <url>https://maven-central.storage.googleapis.com/maven2</url>
+    </mirror>
+    
+    <!-- JCenter Repository -->
+    <mirror>
+      <id>jcenter</id>
+      <mirrorOf>central</mirrorOf>
+      <name>JCenter</name>
+      <url>https://jcenter.bintray.com</url>
+    </mirror>
+    
+    <!-- UK Maven Central Mirror -->
+    <mirror>
+      <id>uk-maven-central</id>
+      <mirrorOf>central</mirrorOf>
+      <name>UK Maven Central</name>
+      <url>https://repo1.maven.org/maven2</url>
+    </mirror>
+    
+    <!-- 阿里云 Maven 镜像 (作为备选方案) -->
+    <mirror>
+      <id>aliyunmaven</id>
+      <mirrorOf>central</mirrorOf>
+      <name>阿里云公共仓库</name>
+      <url>https://maven.aliyun.com/repository/central</url>
+    </mirror>
+    
+    <!-- 腾讯云 Maven 镜像 (作为备选方案) -->
+    <mirror>
+      <id>tencent</id>
+      <mirrorOf>central</mirrorOf>
+      <name>腾讯云公共仓库</name>
+      <url>https://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+    </mirror>
+    
+<!--    &lt;!&ndash; 华为云 Maven 镜像 (作为备选方案) &ndash;&gt;-->
+<!--    <mirror>-->
+<!--      <id>huaweicloud</id>-->
+<!--      <mirrorOf>central</mirrorOf>-->
+<!--      <name>华为云公共仓库</name>-->
+<!--      <url>https://repo.huaweicloud.com/repository/maven/</url>-->
+<!--    </mirror>-->
+<!--    -->
+<!--    &lt;!&ndash; 网易 Maven 镜像 (作为备选方案) &ndash;&gt;-->
+<!--    <mirror>-->
+<!--      <id>netease</id>-->
+<!--      <mirrorOf>central</mirrorOf>-->
+<!--      <name>网易 Maven 镜像</name>-->
+<!--      <url>https://mirrors.163.com/maven/repository/maven-public/</url>-->
+<!--    </mirror>-->
+  </mirrors>
+  
+  <profiles>
+    <profile>
+      <id>default</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  
+  <activeProfiles>
+    <activeProfile>default</activeProfile>
+  </activeProfiles>
+</settings>
